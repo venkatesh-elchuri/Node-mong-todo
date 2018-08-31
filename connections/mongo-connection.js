@@ -6,22 +6,22 @@ MongoClient.connect(`mongodb://localhost:27017/mono-test-db`,
     if(err){
         return console.log('unable connect to the data base',err)
     }
-    db.collection('user').insertMany([{
-        user:'venkatesh',
-        age:24
+    // db.collection('user').insertMany([{
+    //     user:'venkatesh',
+    //     age:24
        
-     },{ user:'venky',
-         age:28
+    //  },{ user:'venky',
+    //      age:28
     
-    },{ user:'venkatesh',
-         age:22
+    // },{ user:'venkatesh',
+    //      age:22
     
-    },{ user:'ashok',
-    age:25
+    // },{ user:'ashok',
+    // age:25
 
-    }],(err,result)=>{
-         console.log(result)
-     }); 
+    // }],(err,result)=>{
+    //      console.log(result)
+    //  }); 
 
     //  db.collection('user').insertOne({
     //      user:'venkatesh',
