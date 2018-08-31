@@ -2,7 +2,6 @@
 
 const {MongoClient,ObjectId} = require('mongodb')
 
-//if you want to search with direclly with _id because it's not a just string
  var newId = new ObjectId('5b87780d8717673450f3ab47')
 
 MongoClient.connect(`mongodb://localhost:27017/mono-test-db`,
@@ -12,9 +11,20 @@ MongoClient.connect(`mongodb://localhost:27017/mono-test-db`,
         return console.log('unable connect to the data base',err)
     }
     console.log('successully connect to the database');
-    db.collection('user').find({age: { $ne: 20 }}).toArray().then((result)=>{
-        console.log(JSON.stringify(result))
-    })
+    //delete one
+    // db.collection('user').deleteOne({user:'venkatesh'}).then((result)=>{
+    //     console.log(JSON.stringify(result))
+    // })
+    
+    //deleteMany
+        // db.collection('user').deleteMany({age:24}).then((reslut)=>{
+        //     console.log(reslut)
+        // })
+    //findOneAndDelete it gives an deleted document also
+        db.collection('user').findOneAndDelete({user:'venkatesh'}).then((result)=>{
+            console.log(result)
+        })
+
     db.collection('user').find().count().then((count)=>{
         console.log(count)
     })
