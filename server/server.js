@@ -15,12 +15,29 @@ app.post('/todos',(req,res)=>{
         text:req.body.text
     });
     todo.save().then((item)=>{
-        console.log(item)
+       console.log(item)
         res.send(item)
     },(e)=>{
-        console.log('unable save the todo',e)
+      //  console.log('unable save the todo',e)
+        res.send({status:false})
     })
 })
+
+app.post ('/user',(req,res) =>{
+    let reqBody = req.body
+    var user = new User({
+        user:reqBody.user,
+        email:reqBody.email
+    })
+    user.save().then((item)=>{
+        res.send(item)
+    }).catch((e)=>{
+        console.log('err',e)
+        res.send('failed to create user')
+    })
+})
+
+console.log('node',process.env.NODE_ENV,'started')
 app.listen(3000,()=>{
     console.log('server satred on 3000')
 })
