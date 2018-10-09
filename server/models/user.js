@@ -2,7 +2,8 @@ var {mongoose} = require('../db/mongooses');
 
 var User = mongoose.model('User',{
     user:{
-          type:String
+          type:String,
+          minlength:1
     },
     email:{
         type:String,
@@ -11,8 +12,6 @@ var User = mongoose.model('User',{
         minlength:1
     }
 })
-
-
 
 module.exports = {
     User
