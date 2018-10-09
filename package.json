@@ -4,11 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "NODE_ENV=development node server/server.js",
+    "build:prod":"NODE_ENV=production node server/server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^3.1.4"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongodb": "^3.1.4",
+    "mongoose": "^5.2.12"
   }
 }
