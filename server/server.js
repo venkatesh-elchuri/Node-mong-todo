@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 var {mongoose} = require('./db/mongooses');
 const {Todo} = require('./models/todos')
 const {User} = require('./models/user')
-
+const _ = require('lodash');
 var app = express();
 
 app.use(bodyParser.json());
@@ -32,16 +32,17 @@ app.get('/todos',(req,res)=>{
 })
 
 app.post ('/user',(req,res) =>{
-    let reqBody = req.body
-    var user = new User({
-        user:reqBody.user,
-        email:reqBody.email
-    })
+    var userInfo = _.pick(req.body,['email','password'])
+    var user = new User(
+       // user:reqBody.user,
+        //email:reqBody.email
+        userInfo
+    )
     user.save().then((item)=>{
         res.send(item)
     }).catch((e)=>{
         console.log('err',e)
-        res.send('failed to create user')
+        res.status(400).send('failed to create user')
     })
 })
 

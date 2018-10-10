@@ -10,7 +10,7 @@ if(process.env.NODE_ENV == 'development'){
 mongoose.connect(uri,{ useNewUrlParser: true },()=>{
     console.log('success fully connected to db')
 })
-
+mongoose.set('useCreateIndex', true)
 module.exports = {
     mongoose
 }
